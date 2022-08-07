@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>Booking System</title>
+</head>
+<body>
+<form action="bookingsystem.php" method="post">
+<table>
+<tr>
+<td>Name:</td>
+<td><input type="text" name="name"></td>
+</tr>
+<tr>
+<td>Aadhar Number:</td>
+<td><input type="text" name="aadhar"></td>
+</tr>
+<tr>
+<td>Password:</td>
+<td><input type="password" name="password"></td>
+</tr>
+<tr>
+<td>Ticket Type:</td>
+<td><input type="radio" name="ticket" value="platinum">Platinum</td>
+<td><input type="radio" name="ticket" value="gold">Gold</td>
+<td><input type="radio" name="ticket" value="silver">Silver</td>
+</tr>
+<tr>
+<td>Match No:</td>
+<td><input type="checkbox" name="match" value="1">Match 1</td>
+<td><input type="checkbox" name="match" value="2">Match 2</td>
+<td><input type="checkbox" name="match" value="3">Match 3</td>
+<td><input type="checkbox" name="match" value="4">Match 4</td>
+<td><input type="checkbox" name="match" value="5">Match 5</td>
+</tr>
+<tr>
+<td><input type="submit" name="submit" value="Submit"></td>
+</tr>
+</table>
+</form>
+<?php
+if(isset($_POST['submit']))
+{
+$name=$_POST['name'];
+$aadhar=$_POST['aadhar'];
+$password=$_POST['password'];
+$ticket=$_POST['ticket'];
+$match=$_POST['match'];
+$con=mysqli_connect("localhost","root","root","ipl");
+$query="insert into user values('$name','$aadhar','$password','$ticket','$match')";
+$result=mysqli_query($con,$query);
+if($result)
+{
+echo "Data inserted successfully";
+}
+else
+{
+echo "Data not inserted";
+}
+}
+?>
+</body>
+</html>
